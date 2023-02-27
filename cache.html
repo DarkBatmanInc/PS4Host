@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html manifest="cache.manifest">
+
+<head>
+    <title>PS4 Host FW 9.00 v0.3 by Mechas</title>
+    <style>
+        @import url('bootstrap.min.css');
+
+        @font-face {
+            font-family: "Montserrat";
+            src: url("Montserrat.ttf");
+        }
+
+        html,
+        body {
+            background-image: url('img.jpg');
+            background-size: cover;
+            background-position: top;
+            background-repeat: no-repeat;
+            background-color: #040a18;
+            color: white;
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            margin: 0px;
+            overflow: hidden;
+            box-shadow: 0 0 0 200em #040a189f inset;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .header-box {
+            position: absolute;
+            width: 100%;
+        }
+
+        .main-container {
+            height: 100%;
+            /* padding: 1%; */
+        }
+
+        #load {
+            display: none;
+        }
+
+        #warningico {
+            display: none;
+        }
+
+        #ps {
+            position: fixed;
+            top: 0.5em;
+        }
+
+        #ban {
+            width: 300px;
+            margin: 0px;
+            padding: 0px;
+            color: gold;
+            filter: invert(99%) sepia(99%) saturate(2%) hue-rotate(168deg) brightness(107%) contrast(100%) drop-shadow(2px 0px 4px gold);
+        }
+
+        .alert {
+            --bs-alert-border-radius: 2vh !important;
+        }
+
+        .alert-primary {
+            --bs-alert-color: white !important;
+            --bs-alert-bg: #040a189f !important;
+        }
+
+        .alert {
+            margin-bottom: 0px !important;
+        }
+
+        .w-5 {
+            width: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header-box">
+        <img src="bg.svg">
+    </header>
+    <main class="main-container">
+        <script>
+            history.replaceState(null, null, 'index.html');
+            var histlength = history.length;
+            history.go(-histlength);
+
+            function DLProgress(e) {
+                Percent = (Math.round(e.loaded / e.total * 100));
+                setTimeout(function () {
+                    document.getElementById("load").style.display = "block";
+                    window.msgs2.innerHTML = "Instalando cache offline: " + Percent + "%";
+                }, 500)
+            }
+
+            function DisplayCacheProgress() {
+                setTimeout(function () {
+                    document.getElementById("load").style.display = "none";
+                    window.msgs2.innerHTML = "Cache instalado correctamente ✔";
+                }, 1500);
+                setTimeout(function () {
+                    document.getElementById("warningico").style.display = "block";
+                    window.msgs2.innerHTML = "Por favor cierre y re-abra el navegador...";
+                }, 3500);
+            }
+            window.applicationCache.addEventListener("progress", DLProgress, false);
+            window.applicationCache.oncached = function (e) {
+                DisplayCacheProgress();
+            };
+            window.applicationCache.onupdateready = function (e) {
+                DisplayCacheProgress();
+            };
+        </script>
+
+        <div class="d-flex align-items-center justify-content-center">
+            <div class="d-flex">
+                <div id="baner">
+                    <img id="ban" src="host.svg">
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-row align-items-center justify-content-center h-75">
+            <div class="d-flex alert alert-primary justify-content-center w-75" role="alert">
+                <div class="d-flex align-items-center justify-content-center">
+                    <div id="warningico" class="w-5">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img"
+                            aria-label="Warning:">
+                            <path
+                                d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </svg>
+                    </div>
+                    <div id=msgs2 class="fs-3">
+                        Esperando...
+                    </div>
+                    <div id="load" class="spinner-border text-primary mx-4" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

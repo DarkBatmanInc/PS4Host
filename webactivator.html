@@ -1,0 +1,135 @@
+<html>
+<style>
+    html,
+    body {
+        background-image: url('img.jpg');
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+        background-color: #040a18;
+        color: white;
+        height: 100%;
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        margin: 0px;
+        overflow: hidden;
+        box-shadow: 0 0 0 200em #040a189f inset;
+    }
+
+    h1 {
+        text-shadow: 0.1em 0.1em 0.2em black;
+        font-size: 25px;
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+        color: white;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .flex-row {
+            flex-direction: row !important;
+    }
+
+    .flex-column {
+        -webkit-box-orient: vertical!important;
+        -webkit-box-direction: normal!important;
+        -ms-flex-direction: column!important;
+        flex-direction: column!important;
+    }
+
+    .justify-content-center {
+        justify-content: center !important;
+    }
+    
+    .align-items-center {
+        -webkit-box-align: center!important;
+        -ms-flex-align: center!important;
+        align-items: center!important;
+    }
+
+    .d-flex {
+        display: flex !important;
+    }
+
+    .d-inline-flex {
+        display: inline-flex!important;
+    }
+
+    .mb-2{
+        margin-bottom: 10%;
+    }
+
+    .h-100 {
+        height: 100%!important;
+    }
+
+    .spinner-grow-me {
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        vertical-align: -0.125em;
+        background-color: none !important;
+        border-radius: 50%;
+        opacity: 0;
+        -webkit-animation: 1.75s linear infinite spinner-grow;
+        animation: 1.75s linear infinite spinner-grow;
+    }
+</style>
+
+<body>
+    <header class="d-flex flex-column" style="position:absolute; width:100%; height: 100%;">
+        <img src="bg.svg">
+    </header>
+    <h1 style="margin-top: 17px;">Cargando Payload... Porfavor espere !!!</h1>
+    <hr>
+    <div class="d-flex flex-row justify-content-center h-100">
+        <div class="d-flex align-items-center mb-2">
+            <div>
+                <h1 style="font-size:30px;">Esto tomará un tiempo entre 20 y 40 segundos...</h1>
+            </div>
+        </div>
+        <div class="d-flex spinner-grow-me" role="status">
+            <img src="load.png">
+        </div>
+    </div>
+    <div style="opacity: 0">
+        <p><i>Italic text</i></p>
+        <table>
+            <tr>
+                <th>H1</th>
+                <th>H2</th>
+                <th>H3</th>
+            </tr>
+            <tr>
+                <td>text</td>
+                <td><input value="text" /></td>
+                <td><button>text</button></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        function loadScript(path) {
+            var xhr = new XMLHttpRequest(path);
+            xhr.open("GET", path, false);
+            xhr.send('');
+            return xhr.responseText;
+        }
+
+        setTimeout(function () {
+            eval.call(window, loadScript('netcat.js') +
+                loadScript('exploit.js') +
+                loadScript('malloc.js') +
+                loadScript('rop2.js') +
+                loadScript('syscalls.js') +
+                loadScript('syscalls2.js') +
+                loadScript('payload.js') +
+                loadScript('relocator.js') +
+                loadScript('frontend.js'));
+            document.getElementById('q').innerHTML = 'Some other text';
+        }, 50);
+    </script>
+</body>
+
+</html>

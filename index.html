@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PS4 Host FW 9.00 v0.3 by Mechas</title>
+    <style>
+        @import url('bootstrap.min.css');
+
+        @font-face {
+            font-family: "Montserrat";
+            src: url("Montserrat.ttf");
+        }
+
+        html,
+        body {
+            background-image: url('img.jpg');
+            background-size: cover;
+            background-position: top;
+            background-repeat: no-repeat;
+            background-color: #040a18;
+            color: white;
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            margin: 0px;
+            overflow: hidden;
+            box-shadow: 0 0 0 200em #040a189f inset;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #jb-progress {
+            display: block;
+        }
+
+        #main-section {
+            display: none;
+        }
+
+        #mods-section {
+            display: none;
+        }
+
+        .header-box {
+            position: absolute;
+            width: 100%;
+        }
+
+        .main-container {
+            position: relative;
+            height: 100%;
+            padding: 0px;
+            margin-top: 0px;
+            /* padding: 1%; */
+        }
+
+        .card {
+            --bs-card-bg: #040a189f !important;
+            --bs-card-border-radius: 2vh !important;
+        }
+
+        .btn {
+            --bs-btn-font-weight: 550 !important;
+            --bs-btn-font-size: 1.2rem !important;
+            margin-left: 1em !important;
+        }
+
+        .btn-outline-primary {
+            --bs-btn-color: white !important;
+        }
+
+        .badge-position {
+            position: absolute;
+            top: 1em;
+            margin-left: 1.5em;
+            padding: 8px;
+            background-color: firebrick !important;
+            z-index: 999;
+        }
+
+        .badge {
+            --bs-badge-font-size: 1.5em;
+        }
+
+        .alert {
+            --bs-alert-border-radius: 2vh !important;
+        }
+
+        .alert-primary {
+            --bs-alert-color: white !important;
+            --bs-alert-bg: #040a189f !important;
+        }
+
+        .h-85 {
+            height: 85%;
+        }
+
+        .w-90 {
+            width: 90% !important;
+        }
+
+        .offcanvas,
+        .offcanvas-lg,
+        .offcanvas-md,
+        .offcanvas-sm,
+        .offcanvas-xl,
+        .offcanvas-xxl {
+            --bs-offcanvas-height: 40vh !important;
+            --bs-offcanvas-bg: #040a189f !important;
+        }
+
+        .offcanvas.offcanvas-bottom {
+            border-top: var(--bs-offcanvas-border-width) solid var(--bs-offcanvas-border-color);
+            border-top-left-radius: 4vh;
+            border-top-right-radius: 4vh;
+        }
+
+        .offcanvas-title {
+            margin-left: 45%;
+            color: white;
+        }
+
+        .btn-close {
+            --bs-btn-close-opacity: 1 !important;
+        }
+
+        #ps {
+            position: fixed;
+            top: 0.7em;
+        }
+
+        #baner {
+            margin-top: 2px;
+        }
+
+        #ban {
+            width: 300px;
+            margin: 0px;
+            padding: 0px;
+            color: gold;
+            filter: invert(99%) sepia(99%) saturate(2%) hue-rotate(168deg) brightness(107%) contrast(100%) drop-shadow(2px 0px 4px gold);
+        }
+    </style>
+    <script src="int64.js"></script>
+    <script src="rop.js"></script>
+    <script src="kexploit.js"></script>
+    <script src="webkit.js"></script>
+</head>
+
+<body onload="setTimeout(poc, 50);">
+    <script>
+        if (window.applicationCache.status == '0') {
+            window.location.replace("cache.html");
+        }
+    </script>
+    <header class="header-box">
+        <img src="bg.svg">
+    </header>
+    <main class="main-container">
+        <div class="d-flex align-items-center justify-content-center">
+            <div class="d-flex">
+                <div id="baner">
+                    <img id="ban" src="host.svg">
+                </div>
+            </div>
+        </div>
+        <div id="jb-progress" class="w-100 h-85">
+            <div class="d-flex justify-content-center h-100">
+                <div class="d-flex flex-row mb-5">
+                    <div class="d-flex align-items-center mb-5">
+                        <h1 id=msgs2 class="fs-1"> Cargando Jailbreak.
+                            Porfavor espere...</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="main-section" class="d-flex align-items-center justify-content-center h-100">
+            <div class="d-flex flex-column w-90 mb-5">
+                <div class="d-flex justify-content-center">
+                    <div class="card w-100 mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title fs-4 mb-3">Main Payloads</h5>
+                            <button type="button" class="btn btn-outline-warning"
+                                onmouseover="msgs.innerHTML='GoldHen v2.3 para FW 9.00'"
+                                onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_goldhen23()>
+                                GoldHEN
+                                v2.3
+                            </button>
+                            <button type="button" class="btn btn-outline-primary"
+                                onmouseover="msgs.innerHTML='Enviar Payload usando el puerto 9020'"
+                                onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3  by Mechas'" onclick=load_binloader()>
+                                Bin
+                                Loader
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="card w-100 mb-2">
+                        <div class="card-body">
+                            <h5 class="card-title fs-4 mb-3">Payloads</h5>
+                            <div class="mb-3">
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Dumpear únicamente el Juego a la unidad USB'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_Gdumper()>
+                                    Game-Dumper
+                                </button>
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Dumpear únicamente la Actualización a la unidad USB'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_Udumper()>
+                                    Update-Dumper
+                                </button>
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Dumpear por separado el Juego y la Actualización a la unidad USB'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_SGUdumper()>
+                                    SGU-Dumper
+                                </button>
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Dumpear fusionado Juego y Actualización a la unidad USB'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_MGUdumper()>
+                                    MGU-Dumper
+                                </button>
+                            </div>
+                            <div class="mb-3">
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Habilita algunas funciones de depuración disponibles en TestKit'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_todex()>
+                                    ToDex
+                                </button>
+                                <a href="webactivator.html"><button type="button" class="btn btn-outline-primary"
+                                        onmouseover="msgs.innerHTML='Activa su cuenta de usuario desde el navegador de la consola'"
+                                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"> Activator-Web
+                                    </button></a>
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Accede a esta consola a través de FTP (Cuidado con lo que haces)'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_ftp()>
+                                    FTP
+                                </button>
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Transferir juegos instalados a una unidad USB en exFAT'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_app2usb()>
+                                    App2USB
+                                </button>
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Cree una copia de seguridad de la base de datos y los usuarios en una unidad USB'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_dbackup()> DB
+                                    Backup
+                                </button>
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Restaurar una copia de seguridad de la base de datos y los usuarios desde una unidad USB'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_dbrestore()>
+                                    DB
+                                    Restore
+                                </button>
+                            </div>
+                            <div class="mb-3">
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Habilitar actualizaciones del sistema'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_enablebUpdates()>
+                                    Habilitar
+                                    Act.
+                                </button>
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Deshabilitar actualizaciones del sistema'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_disableUpdates()>
+                                    Deshabilitar Act.
+                                </button>
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Habilitar/deshabilitar el historial del navegador'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_historyBlocker()>
+                                    History
+                                    Blocker
+                                </button>
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Dumpear el kernel de consola a una unidad USB'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_kernelDump()>
+                                    Kernel
+                                    Dumper
+                                </button>
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Dumpear un módulo kernel en una unidad USB'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_moduleDump()>
+                                    Module
+                                    Dumper
+                                </button>
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='PS4 Debug para FW 9.00'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_ps4debug()>
+                                    PS4
+                                    Debug
+                                </button>
+                            </div>
+                            <div class="mb-3">
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Desactiva la ASLR (aleatorización del diseño del espacio de direcciones)'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_disbAslr()>
+                                    Desactivar ASLR
+                                </button>
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Desactiva el Modo IDU si lo has activado por error'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_exitidu()>
+                                    Desactiva
+                                    IDU
+                                </button>
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Cambia el nombre del RIF 'fake' a RIF 'free' '"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_rifRen()>
+                                    Renombrar
+                                    RIF
+                                </button>
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='UART permanente para FW 9.00'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_permUart()>
+                                    UART
+                                    permanente
+                                </button>
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Requerido para activar trucos a través del sitio web de PS4 Trainer'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_webrte()>
+                                    WebRTE
+                                </button>
+                                <a href="http://ps4trainer.com/Trainer/index.html" target="_blank"><button type="button"
+                                        class="btn btn-outline-success"
+                                        onmouseover="msgs.innerHTML='Sitio web de PS4 Trainer (siga las instrucciones allí)'"
+                                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"> PS4 Trainer
+                                    </button></a>
+                            </div>
+                            <div class="mb-3">
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Cargar Linux con 1GB VRAM'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_linux1gb()>
+                                    Linux
+                                    1GB
+                                </button>
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Cargar Linux con 2GB VRAM'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_linux2gb()>
+                                    Linux
+                                    2GB
+                                </button>
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Cargar Linux con 3GB VRAM'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_linux3gb()>
+                                    Linux
+                                    3GB
+                                </button>
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Cargar Linux con 4GB VRAM'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_linux4gb()>
+                                    Linux
+                                    4GB
+                                </button>
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Cargar Linux con 5GB VRAM'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_linux5gb()>
+                                    Linux
+                                    5GB
+                                </button>
+                            </div>
+                            <div class="mb-2">
+                                <button type="button" class="btn btn-outline-success"
+                                    onmouseover="msgs.innerHTML='Mods de juegos (Hosted Online)'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                                    aria-controls="offcanvasBottom">
+                                    Games-Mods (Online) </button>
+                                <button type="button" class="btn btn-outline-danger"
+                                    onmouseover="msgs.innerHTML='Orbis ToolBox Alpha 1190 para FW 9.00'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_toolbox()>
+                                    Orbis-Toolbox
+                                </button>
+                                <button type="button" class="btn btn-outline-primary"
+                                    onmouseover="msgs.innerHTML='Modificar la velocidad del ventilador de PS4'"
+                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'"
+                                    onclick=load_fanthreshold()>
+                                    Límite de
+                                    ventilador
+                                </button>
+                                <select id="tempC" class="m-2"></select>°C
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="msgs" class="alert alert-primary fs-4 mb-5" role="alert">
+                    Cargas Útiles
+                </div>
+            </div>
+        </div>
+
+        <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom"
+            aria-labelledby="offcanvasBottomLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasBottomLabel">Payloads Online</h5>
+                <button type="button" class="btn-close white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="mb-3">
+                    <button type="button" class="btn btn-outline-primary"
+                        onmouseover="msgs.innerHTML='GTA V Mod - Arabic Guy v1.00 (L1 + R1)'"
+                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_arabicGuy100()>
+                        Arabic
+                        Guy
+                        v1.00
+                    </button>
+                    <button type="button" class="btn btn-outline-primary"
+                        onmouseover="msgs.innerHTML='GTA V Mod - Arabic Guy v1.27 (L1 + R1)'"
+                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_arabicGuy127()>
+                        Arabic
+                        Guy
+                        v1.27
+                    </button>
+                    <button type="button" class="btn btn-outline-primary"
+                        onmouseover="msgs.innerHTML='GTA V Mod - Arabic Guy v1.32 (L1 + R1)'"
+                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_arabicGuy132()>
+                        Arabic
+                        Guy
+                        v1.32
+                    </button>
+                    <button type="button" class="btn btn-outline-primary"
+                        onmouseover="msgs.innerHTML='GTA V Mod - Arabic Guy v1.33 (L1 + R1)'"
+                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_arabicGuy133()>
+                        Arabic
+                        Guy
+                        v1.33
+                    </button>
+                    <button type="button" class="btn btn-outline-primary"
+                        onmouseover="msgs.innerHTML='GTA V Mod - Expulsion v4.0 - 1.38'"
+                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_Expulsion()>
+                        Expulsion
+                        v4.0 -
+                        1.38 </button>
+                    <button type="button" class="btn btn-outline-primary"
+                        onmouseover="msgs.innerHTML='GTA V Mod - Lamance v0.9 - 1.38 (Derecha + Cuadrado)'"
+                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_Lamance()> Lamance
+                        v0.9 -
+                        1.38
+                    </button>
+                </div>
+                <div class="mb-3">
+                    <button type="button" class="btn btn-outline-primary"
+                        onmouseover="msgs.innerHTML='GTA V Mod - WildeModz-1.32 v1.3'"
+                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_WildeModz132()>
+                        WildeModz-1.32
+                        v1.3 </button>
+                    <button type="button" class="btn btn-outline-primary"
+                        onmouseover="msgs.innerHTML='GTA V Mod - WildeModz-1.33 v1.3'"
+                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_WildeModz133()>
+                        WildeModz-1.33
+                        v1.3 </button>
+                    <button type="button" class="btn btn-outline-primary"
+                        onmouseover="msgs.innerHTML='GTA V Mod - WildeModz-1.38 v1.7'"
+                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_WildeModz138()>
+                        WildeModz-1.38
+                        v1.7 </button>
+                    <button type="button" class="btn btn-outline-primary"
+                        onmouseover="msgs.innerHTML='GTA V Mod - Beef Queef Mod v1.33'"
+                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_beefQueef133()> Beef
+                        Queef
+                        Mod
+                        v1.33 </button>
+                    <button type="button" class="btn btn-outline-primary"
+                        onmouseover="msgs.innerHTML='GTA V Mod - Beef Queef Mod v1.34'"
+                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_beefQueef134()> Beef
+                        Queef
+                        Mod
+                        v1.34 </button>
+                    <button type="button" class="btn btn-outline-primary"
+                        onmouseover="msgs.innerHTML='GTA V Mod - Beef Queef Mod v1.38d'"
+                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_beefQueef138()> Beef
+                        Queef
+                        Mod
+                        v1.38d </button>
+                </div>
+                <div class="mb-3">
+                    <button type="button" class="btn btn-outline-primary"
+                        onmouseover="msgs.innerHTML='Red Dead Redemption 2 Mod - Oysters Menu 1.00 v1.3.7'"
+                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_Oysters100()> Oysters
+                        Menu
+                        1.00
+                    </button>
+                    <button type="button" class="btn btn-outline-primary"
+                        onmouseover="msgs.innerHTML='Red Dead Redemption 2 Mod - Oysters Menu 1.13 v1.3.6'"
+                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_Oysters113()> Oysters
+                        Menu
+                        1.13
+                    </button>
+                    <button type="button" class="btn btn-outline-primary"
+                        onmouseover="msgs.innerHTML='Red Dead Redemption 2 Mod - Oysters Menu 1.19 v1.3.6'"
+                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_Oysters119()> Oysters
+                        Menu
+                        1.19
+                    </button>
+                    <button type="button" class="btn btn-outline-primary"
+                        onmouseover="msgs.innerHTML='Red Dead Redemption 2 Mod - Oysters Menu 1.24 v1.3.7'"
+                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_Oysters124()> Oysters
+                        Menu
+                        1.24
+                    </button>
+                    <button type="button" class="btn btn-outline-primary"
+                        onmouseover="msgs.innerHTML='Red Dead Redemption 2 Mod - Oysters Menu 1.29 v1.3.7'"
+                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_Oysters129()> Oysters
+                        Menu
+                        1.29
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        for (var i = 40; i <= 75; i = i + 5) {
+            var select = document.getElementById("tempC");
+            var option = document.createElement("OPTION");
+            select.options.add(option);
+            option.text = i;
+            option.value = i;
+        }
+        tempC.value = 60;
+    </script>
+    <script>
+        function jbdone() {
+            document.getElementById("main-section").style.display = "block";
+            document.getElementById("jb-progress").style.display = "none";
+        }
+
+        function back() {
+            document.getElementById("main-section").style.display = "block";
+            document.getElementById("jb-progress").style.display = "none";
+        }
+
+        function allset() {
+            msgs.innerHTML = LoadedMSG
+        }
+
+        function load_poc() {
+            var req = new XMLHttpRequest();
+            req.responseType = "arraybuffer";
+            req.open('GET', PLfile);
+            req.send();
+            req.onreadystatechange = function () {
+                if (req.readyState == 4) {
+                    PLD = req.response;
+                    var payload_buffer = chain.syscall(477, 0, PLD.byteLength * 4, 7, 0x1002, -1, 0);
+                    var pl = p.array_from_address(payload_buffer, PLD.byteLength * 4);
+                    var padding = new Uint8Array(4 - (req.response.byteLength % 4) % 4);
+                    var tmp = new Uint8Array(req.response.byteLength + padding.byteLength);
+                    tmp.set(new Uint8Array(req.response), 0);
+                    tmp.set(padding, req.response.byteLength);
+                    var shellcode = new Uint32Array(tmp.buffer);
+                    pl.set(shellcode, 0);
+                    var pthread = p.malloc(0x10);
+                    chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
+                    allset();
+                }
+            };
+        }
+
+        function load_binloader() {
+            var payload_buffer = chain.syscall(477, 0x0, 0x300000, 0x7, 0x1000, 0xFFFFFFFF, 0);
+            var payload_loader = p.malloc32(0x1000);
+
+            var loader_writer = payload_loader.backing;
+            loader_writer[0] = 0x56415741;
+            loader_writer[1] = 0x83485541;
+            loader_writer[2] = 0x894818EC;
+            loader_writer[3] = 0xC748243C;
+            loader_writer[4] = 0x10082444;
+            loader_writer[5] = 0x483C2302;
+            loader_writer[6] = 0x102444C7;
+            loader_writer[7] = 0x00000000;
+            loader_writer[8] = 0x000002BF;
+            loader_writer[9] = 0x0001BE00;
+            loader_writer[10] = 0xD2310000;
+            loader_writer[11] = 0x00009CE8;
+            loader_writer[12] = 0xC7894100;
+            loader_writer[13] = 0x8D48C789;
+            loader_writer[14] = 0xBA082474;
+            loader_writer[15] = 0x00000010;
+            loader_writer[16] = 0x000095E8;
+            loader_writer[17] = 0xFF894400;
+            loader_writer[18] = 0x000001BE;
+            loader_writer[19] = 0x0095E800;
+            loader_writer[20] = 0x89440000;
+            loader_writer[21] = 0x31F631FF;
+            loader_writer[22] = 0x0062E8D2;
+            loader_writer[23] = 0x89410000;
+            loader_writer[24] = 0x2C8B4CC6;
+            loader_writer[25] = 0x45C64124;
+            loader_writer[26] = 0x05EBC300;
+            loader_writer[27] = 0x01499848;
+            loader_writer[28] = 0xF78944C5;
+            loader_writer[29] = 0xBAEE894C;
+            loader_writer[30] = 0x00001000;
+            loader_writer[31] = 0x000025E8;
+            loader_writer[32] = 0x7FC08500;
+            loader_writer[33] = 0xFF8944E7;
+            loader_writer[34] = 0x000026E8;
+            loader_writer[35] = 0xF7894400;
+            loader_writer[36] = 0x00001EE8;
+            loader_writer[37] = 0x2414FF00;
+            loader_writer[38] = 0x18C48348;
+            loader_writer[39] = 0x5E415D41;
+            loader_writer[40] = 0x31485F41;
+            loader_writer[41] = 0xC748C3C0;
+            loader_writer[42] = 0x000003C0;
+            loader_writer[43] = 0xCA894900;
+            loader_writer[44] = 0x48C3050F;
+            loader_writer[45] = 0x0006C0C7;
+            loader_writer[46] = 0x89490000;
+            loader_writer[47] = 0xC3050FCA;
+            loader_writer[48] = 0x1EC0C748;
+            loader_writer[49] = 0x49000000;
+            loader_writer[50] = 0x050FCA89;
+            loader_writer[51] = 0xC0C748C3;
+            loader_writer[52] = 0x00000061;
+            loader_writer[53] = 0x0FCA8949;
+            loader_writer[54] = 0xC748C305;
+            loader_writer[55] = 0x000068C0;
+            loader_writer[56] = 0xCA894900;
+            loader_writer[57] = 0x48C3050F;
+            loader_writer[58] = 0x006AC0C7;
+            loader_writer[59] = 0x89490000;
+            loader_writer[60] = 0xC3050FCA;
+            chain.syscall(74, payload_loader, 0x4000, (0x1 | 0x2 | 0x4));
+
+            var pthread = p.malloc(0x10);
+            //
+            {
+                chain.fcall(window.syscalls[203], payload_buffer, 0x300000);
+                chain.fcall(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_loader,
+                    payload_buffer);
+            }
+            chain.run();
+            LoadedMSG = "Iniciando Bin Loader...";
+            alert("Esperando Payload... envíalo usando la IP de PS4 y el puerto 9020");
+            allset();
+        }
+
+        function loadScript(path) {
+            var xhr = new XMLHttpRequest(path);
+            xhr.open("GET", path, false);
+            xhr.send('');
+            return xhr.responseText;
+        }
+
+        function load_linux1gb() {
+            msgs.innerHTML = "Linux Loader 1GB Launched ...";
+            eval.call(window, loadScript('netcat.js') +
+                loadScript('malloc.js') +
+                loadScript('rop2.js') +
+                loadScript('syscalls.js') +
+                loadScript('syscalls2.js') +
+                loadScript('linux1gb.js') +
+                loadScript('mira.js') +
+                loadScript('relocator.js'));
+        }
+
+        function load_linux2gb() {
+            msgs.innerHTML = "Linux Loader 2GB Launched ...";
+            eval.call(window, loadScript('netcat.js') +
+                loadScript('malloc.js') +
+                loadScript('rop2.js') +
+                loadScript('syscalls.js') +
+                loadScript('syscalls2.js') +
+                loadScript('linux1gb.js') +
+                loadScript('mira.js') +
+                loadScript('relocator.js'));
+        }
+
+        function load_linux3gb() {
+            msgs.innerHTML = "Linux Loader 3GB Launched ...";
+            eval.call(window, loadScript('netcat.js') +
+                loadScript('malloc.js') +
+                loadScript('rop2.js') +
+                loadScript('syscalls.js') +
+                loadScript('syscalls2.js') +
+                loadScript('linux1gb.js') +
+                loadScript('mira.js') +
+                loadScript('relocator.js'));
+        }
+
+        function load_linux4gb() {
+            msgs.innerHTML = "Linux Loader 4GB Launched ...";
+            eval.call(window, loadScript('netcat.js') +
+                loadScript('malloc.js') +
+                loadScript('rop2.js') +
+                loadScript('syscalls.js') +
+                loadScript('syscalls2.js') +
+                loadScript('linux1gb.js') +
+                loadScript('mira.js') +
+                loadScript('relocator.js'));
+        }
+
+        function load_linux5gb() {
+            msgs.innerHTML = "Linux Loader 5GB Launched ...";
+            eval.call(window, loadScript('netcat.js') +
+                loadScript('malloc.js') +
+                loadScript('rop2.js') +
+                loadScript('syscalls.js') +
+                loadScript('syscalls2.js') +
+                loadScript('linux1gb.js') +
+                loadScript('mira.js') +
+                loadScript('relocator.js'));
+        }
+
+        function load_goldhen23() {
+            LoadedMSG = "GoldHEN v2.3 Cargado ✔";
+            PLfile = "goldhen_2.3.bin";
+            load_poc();
+        }
+
+        function load_Gdumper() {
+            LoadedMSG = "Game-Dumper Cargado...";
+            PLfile = "dumperG.bin";
+            load_poc();
+        }
+
+        function load_Udumper() {
+            LoadedMSG = "Update-Dumper Cargado...";
+            PLfile = "dumperU.bin";
+            load_poc();
+        }
+
+        function load_SGUdumper() {
+            LoadedMSG = "Separate Game and Update Dumper Cargado...";
+            PLfile = "dumperSGU.bin";
+            load_poc();
+        }
+
+        function load_MGUdumper() {
+            LoadedMSG = "Merged Game and Update Dumper Cargado...";
+            PLfile = "dumperMGU.bin";
+            load_poc();
+        }
+
+        function load_todex() {
+            LoadedMSG = "ToDex Cargado...";
+            PLfile = "todex.bin";
+            load_poc();
+        }
+
+        function load_ftp() {
+            LoadedMSG = "FTP Cargado..."
+            PLfile = "ftp.bin";
+            load_poc();
+        }
+
+        function load_app2usb() {
+            LoadedMSG = "App2USB Cargado..."
+            PLfile = "app2usb.bin";
+            load_poc();
+        }
+
+        function load_dbackup() {
+            LoadedMSG = "DB Backup Cargado..."
+            PLfile = "backup.bin";
+            load_poc();
+        }
+
+        function load_dbrestore() {
+            LoadedMSG = "DB Restore Cargado..."
+            PLfile = "restore.bin";
+            load_poc();
+        }
+
+        function load_enablebUpdates() {
+            LoadedMSG = "Enable Updates Cargado..."
+            PLfile = "enable-updates.bin";
+            load_poc();
+        }
+
+        function load_disableUpdates() {
+            LoadedMSG = "Disable Updates Cargado..."
+            PLfile = "disable-updates.bin";
+            load_poc();
+        }
+
+        function load_historyBlocker() {
+            LoadedMSG = "History Blocker Cargado..."
+            PLfile = "history-blocker.bin";
+            load_poc();
+        }
+
+        function load_kernelDump() {
+            LoadedMSG = "Kernel Dumper Cargado..."
+            PLfile = "kernel-dumper.bin";
+            load_poc();
+        }
+
+        function load_moduleDump() {
+            LoadedMSG = "Module Dumper Cargado..."
+            PLfile = "module-dumper.bin";
+            load_poc();
+        }
+
+        function load_ps4debug() {
+            LoadedMSG = "PS4 Debug Cargado..."
+            PLfile = "ps4debug.bin";
+            load_poc();
+        }
+
+        function load_disbAslr() {
+            LoadedMSG = "Disable ASLR Cargado..."
+            PLfile = "disable-aslr.bin";
+            load_poc();
+        }
+
+        function load_exitidu() {
+            LoadedMSG = "Exit IDU Cargado..."
+            PLfile = "exit-idu.bin";
+            load_poc();
+        }
+
+        function load_rifRen() {
+            LoadedMSG = "RIF Renamer Cargado..."
+            PLfile = "rif-renamer.bin";
+            load_poc();
+        }
+
+        function load_permUart() {
+            LoadedMSG = "Permanent UART Cargado..."
+            PLfile = "permanent-uart.bin";
+            load_poc();
+        }
+
+        function load_webrte() {
+            LoadedMSG = "WebRTE Cargado..."
+            PLfile = "webrte.bin";
+            load_poc();
+        }
+
+        function load_toolbox() {
+            LoadedMSG = "Orbis-Toolbox Cargado..."
+            PLfile = "Orbis-Toolbox-900.bin";
+            load_poc();
+        }
+
+        function load_fanthreshold() {
+            LoadedMSG = "Fan Threshold Cargado..."
+            PLfile = "fan-threshold" + tempC.value + ".bin";
+            load_poc();
+        }
+
+        function load_arabicGuy100() {
+            msgs.innerHTML = "Cargando... Porfavor espere";
+            LoadedMSG = "Arabic Guy v1.00 Cargado..."
+            PLfile = "arabic-guy100.bin";
+            load_poc();
+        }
+
+        function load_arabicGuy127() {
+            msgs.innerHTML = "Cargando... Porfavor espere";
+            LoadedMSG = "Arabic Guy v1.27 Cargado..."
+            PLfile = "arabic-guy127.bin";
+            load_poc();
+        }
+
+        function load_arabicGuy132() {
+            msgs.innerHTML = "Cargando... Porfavor espere";
+            LoadedMSG = "Arabic Guy v1.32 Cargado..."
+            PLfile = "arabic-guy132.bin";
+            exec_loader = "payload";
+            load_poc();
+        }
+
+        function load_arabicGuy133() {
+            msgs.innerHTML = "Cargando... Porfavor espere";
+            LoadedMSG = "Arabic Guy v1.33 Cargado..."
+            PLfile = "arabic-guy133.bin";
+            load_poc();
+        }
+
+        function load_Expulsion() {
+            msgs.innerHTML = "Cargando... Porfavor espere";
+            LoadedMSG = "Expulsion v4.0 Cargado..."
+            PLfile = "Expulsion-V4.0-1.38.bin";
+            load_poc();
+        }
+
+        function load_Lamance() {
+            msgs.innerHTML = "Cargando... Porfavor espere";
+            LoadedMSG = "Lamance v0.9 Cargado..."
+            PLfile = "Lamance-v0.9-1.38.bin";
+            load_poc();
+        }
+
+        function load_WildeModz132() {
+            msgs.innerHTML = "Cargando... Porfavor espere";
+            LoadedMSG = "WildeModz-1.32 v1.3 Cargado..."
+            PLfile = "WildeModz-1.32-1.3.bin";
+            load_poc();
+        }
+
+        function load_WildeModz133() {
+            msgs.innerHTML = "Cargando... Porfavor espere";
+            LoadedMSG = "WildeModz-1.33 v1.3 Cargado..."
+            PLfile = "WildeModz-1.33-1.3.bin";
+            load_poc();
+        }
+
+        function load_WildeModz138() {
+            msgs.innerHTML = "LCargando... Porfavor espere";
+            LoadedMSG = "WildeModz-1.38 v1.7 Cargado..."
+            PLfile = "WildeModz-1.38-1.7.bin";
+            load_poc();
+        }
+
+        function load_beefQueef133() {
+            msgs.innerHTML = "Cargando... Porfavor espere";
+            LoadedMSG = "Beef Queef Mod v1.33 Cargado..."
+            PLfile = "BeefQueefMod-133.bin";
+            load_poc();
+        }
+
+        function load_beefQueef134() {
+            msgs.innerHTML = "Cargando... Porfavor espere";
+            LoadedMSG = "Beef Queef Mod v1.34 Cargado..."
+            PLfile = "BeefQueefMod-134.bin";
+            load_poc();
+        }
+
+        function load_beefQueef138() {
+            msgs.innerHTML = "Cargando... Porfavor espere";
+            LoadedMSG = "Beef Queef Mod v1.38d Cargado..."
+            PLfile = "BeefQueefMod-138d.bin";
+            load_poc();
+        }
+
+        function load_Oysters100() {
+            msgs.innerHTML = "Cargando... Porfavor espere";
+            LoadedMSG = "Oysters Menu v1.00 Cargado..."
+            PLfile = "OystersMenu-v1.3.7-1.00.bin";
+            load_poc();
+        }
+
+        function load_Oysters113() {
+            msgs.innerHTML = "Cargando... Porfavor espere";
+            LoadedMSG = "Oysters Menu v1.13 Cargado..."
+            PLfile = "OystersMenu-v1.3.6-1.13.bin";
+            load_poc();
+        }
+
+        function load_Oysters119() {
+            msgs.innerHTML = "Cargando... Porfavor espere";
+            LoadedMSG = "Oysters Menu v1.19 Cargado..."
+            PLfile = "OystersMenu-v1.3.6-1.19.bin";
+            load_poc();
+        }
+
+        function load_Oysters124() {
+            msgs.innerHTML = "Cargando... Porfavor espere";
+            LoadedMSG = "Oysters Menu v1.24 Cargado..."
+            PLfile = "OystersMenu-v1.3.7-1.24.bin";
+            load_poc();
+        }
+
+        function load_Oysters129() {
+            msgs.innerHTML = "Cargando... Porfavor espere";
+            LoadedMSG = "Oysters Menu v1.29 Cargado..."
+            PLfile = "OystersMenu-v1.3.7-1.29.bin";
+            load_poc();
+        }
+    </script>
+    <script src="bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
