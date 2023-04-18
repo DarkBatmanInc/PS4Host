@@ -326,7 +326,7 @@
                                     IDU
                                 </button>
                                 <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Cambia el nombre del RIF 'fake' a RIF 'free' '"
+                                    onmouseover="msgs.innerHTML='Cambia el nombre del RIF <fake> a RIF <free>'"
                                     onmouseout="msgs.innerHTML='PS4 Host FW 9.00 v0.3 by Mechas'" onclick=load_rifRen()>
                                     Renombrar
                                     RIF
@@ -537,7 +537,7 @@
         </div>
     </main>
     <script>
-        for (var i = 40; i <= 75; i = i + 1) {
+        for (var i = 40; i <= 75; i = i + 5) {
             var select = document.getElementById("tempC");
             var option = document.createElement("OPTION");
             select.options.add(option);
