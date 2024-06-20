@@ -51,6 +51,7 @@ netcat.js
 Orbis-Toolbox-900.bin
 payload.js
 permanent-uart.bin
+pkgbackup.bin
 ps4debug.bin
 relocator.js
 restore.bin
