@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PS4 Host FW 9.00 by Dark Batman Inc.</title>
+
     <style>
         @import url('bootstrap.min.css');
 
@@ -13,22 +16,98 @@
 
         html,
         body {
-            background-image: url('img.jpg');
-            background-size: cover;
-            background-position: top;
+            background-attachment: fixed;
+            background-image: url(img.jpg);
+            background-position: center;
             background-repeat: no-repeat;
-            background-color: #040a18;
-            color: white;
-            height: 100%;
-            font-family: 'Montserrat', sans-serif;
-            text-align: center;
-            margin: 0px;
-            overflow: hidden;
+            background-size: cover;
             box-shadow: 0 0 0 200em #040a189f inset;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            height: 100vh;
+            text-align: center;
         }
 
-        a {
-            text-decoration: none;
+        .alert {
+            --bs-alert-border-radius: 2vh !important;
+            width: 100%;
+        }
+
+        .alert-primary {
+            --bs-alert-color: white !important;
+            --bs-alert-bg: #040a189f !important;
+        }
+
+        .ban {
+            display: flex;
+            flex: 0 0 30%;
+            color: gold;
+            filter: invert(0%) sepia(99%) saturate(2%) hue-rotate(168deg) brightness(107%) contrast(100%) drop-shadow(2px 0px 4px gold);
+            width: 100%;
+        }
+
+        .btn {
+            --bs-btn-font-weight: 550 !important;
+            --bs-btn-font-size: 0.85rem !important;
+            margin-left: 1em !important;
+            white-space: nowrap;
+        }
+
+        .btn-close {
+            --bs-btn-close-opacity: 1 !important;
+            --bs-btn-close-color: white !important;
+        }
+
+        .btn-outline-primary {
+            --bs-btn-color: white !important;
+        }
+
+        .card {
+            --bs-card-bg: #040a189f !important;
+            --bs-card-border-radius: 2vh !important;
+            padding: 1rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .card-m {
+            flex: 0 0 70%;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .container-full {
+            display: flex;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .form-select {
+            width: min-content;
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+            border-width: 2px;
+            border-color: blueviolet;
+            background-color: transparent;
+            color: blueviolet;
+            font-size: 0.85rem;
+        }
+
+        .header-box {
+            background-attachment: fixed;
+            background-image: url(bg.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .jb-pro {
+            width: 100%;
+            height: 100%;
         }
 
         #jb-progress {
@@ -37,68 +116,6 @@
 
         #main-section {
             display: none;
-        }
-
-        #mods-section {
-            display: none;
-        }
-
-        .header-box {
-            position: absolute;
-            width: 100%;
-        }
-
-        .main-container {
-            position: relative;
-            height: 100%;
-            padding: 0px;
-            margin-top: 0px;
-            /* padding: 1%; */
-        }
-
-        .card {
-            --bs-card-bg: #040a189f !important;
-            --bs-card-border-radius: 2vh !important;
-        }
-
-        .btn {
-            --bs-btn-font-weight: 550 !important;
-            --bs-btn-font-size: 1.2rem !important;
-            margin-left: 1em !important;
-        }
-
-        .btn-outline-primary {
-            --bs-btn-color: white !important;
-        }
-
-        .badge-position {
-            position: absolute;
-            top: 1em;
-            margin-left: 1.5em;
-            padding: 8px;
-            background-color: firebrick !important;
-            z-index: 999;
-        }
-
-        .badge {
-            --bs-badge-font-size: 1.5em;
-        }
-
-        .alert {
-            --bs-alert-border-radius: 2vh !important;
-        }
-
-        .alert-primary {
-            --bs-alert-color: white !important;
-            --bs-alert-bg: #040a189f !important;
-        }
-
-        .h-85 {
-            height: 85%;
-        }
-
-        .w-90 {
-            width: 90% !important;
         }
 
         .offcanvas,
@@ -122,25 +139,34 @@
             color: white;
         }
 
-        .btn-close {
-            --bs-btn-close-opacity: 1 !important;
-        }
+        @media (max-width: 767px) {
+            .alert-primary {
+                font-size: small;
+            }
 
-        #ps {
-            position: fixed;
-            top: 0.7em;
-        }
+            .ban {
+                width: 200px;
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
 
-        #baner {
-            margin-top: 2px;
-        }
+            .btn {
+                --bs-btn-font-size: 0.6rem !important;
+            }
 
-        #ban {
-            width: 300px;
-            margin: 0px;
-            padding: 0px;
-            color: gold;
-            filter: invert(0%) sepia(99%) saturate(2%) hue-rotate(168deg) brightness(107%) contrast(100%) drop-shadow(2px 0px 4px gold);
+            .card {
+                padding: 1rem 0.5rem;
+            }
+
+            .container {
+                max-width: none;
+            }
+
+            .form-select {
+                width: min-content;
+                height: min-content;
+                font-size: 1em
+            }
         }
     </style>
     <script src="int64.js"></script>
@@ -155,410 +181,341 @@
             window.location.replace("cache.html");
         }
     </script>
-    <header class="header-box">
-        <img src="bg.svg">
-    </header>
-    <main class="main-container">
-        <div class="d-flex align-items-center justify-content-center">
-            <div class="d-flex">
-                <div id="baner">
-                    <img id="ban" src="header.svg">
+    <div id="jb-progress" class="jb-pro">
+        <div class="container-full">
+            <div class="d-flex flex-row mb-5">
+                <div class="d-flex align-items-center mb-5">
+                    <h1 id=msgs2 class="fs-1"> Cargando Jailbreak.
+                        Porfavor espere...</h1>
                 </div>
             </div>
         </div>
-        <div id="jb-progress" class="w-100 h-85">
-            <div class="d-flex justify-content-center h-100">
-                <div class="d-flex flex-row mb-5">
-                    <div class="d-flex align-items-center mb-5">
-                        <h1 id=msgs2 class="fs-1"> Cargando Jailbreak.
-                            Porfavor espere...</h1>
+    </div>
+    <div id="main-section">
+        <header class="header-box">
+            <div class="container p-3">
+                <div class="container align-items-left">
+                    <img class="ban" src="header.svg">
+                </div>
+                <div class="card card-m">
+                    <h1 class="card-title fs-4">Main Payloads</h1>
+                    <div class="container">
+                        <button type="button" class="btn btn-outline-warning"
+                            onmouseover="msgs.innerHTML='GoldHen v2.3 para FW 9.00'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_goldhen23()>
+                            GoldHEN v2.3
+                        </button>
+                        <button type="button" class="btn btn-outline-warning"
+                            onmouseover="msgs.innerHTML='GoldHen v2.4 BETA 17.3 para FW 9.00'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            onclick=load_goldhen24b17_3()>
+                            GoldHEN v2.4 BETA 17.3
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Enviar Payload usando el puerto 9020'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_binloader()>
+                            Bin Loader
+                        </button>
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="main-section" class="d-flex align-items-center justify-content-center h-100">
-            <div class="d-flex flex-column w-90 mb-5">
-                <div class="d-flex justify-content-center">
-                    <div class="card w-100 mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title fs-4 mb-3">Main Payloads</h5>
-                            <button type="button" class="btn btn-outline-warning"
-                                onmouseover="msgs.innerHTML='GoldHen v2.3 para FW 9.00'"
-                                onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                onclick=load_goldhen23()>
-                                GoldHEN
-                                v2.3
-                            </button>
-                            <button type="button" class="btn btn-outline-warning"
-                                onmouseover="msgs.innerHTML='GoldHen v2.4 BETA 17.3 para FW 9.00'"
-                                onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                onclick=load_goldhen24b17_3()>
-                                GoldHEN
-                                v2.4 BETA 17.3
-                            </button>
-                            <button type="button" class="btn btn-outline-primary"
-                                onmouseover="msgs.innerHTML='Enviar Payload usando el puerto 9020'"
-                                onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                onclick=load_binloader()>
-                                Bin
-                                Loader
-                            </button>
-                        </div>
+            <div class="container mb-3">
+                <div class="card">
+                    <h1 class="card-title fs-4">Payloads</h1>
+                    <div class="container mb-3">
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Dumpear únicamente el Juego a la unidad USB'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_Gdumper()>
+                            Game-Dumper
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Dumpear únicamente la Actualización a la unidad USB'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_Udumper()>
+                            Update-Dumper
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Dumpear por separado el Juego y la Actualización a la unidad USB'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_SGUdumper()>
+                            SGU-Dumper
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Dumpear fusionado Juego y Actualización a la unidad USB'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_MGUdumper()>
+                            MGU-Dumper
+                        </button>
+                    </div>
+                    <div class="container mb-3">
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Habilita algunas funciones de depuración disponibles en TestKit'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_todex()>
+                            ToDex
+                        </button>
+                        <a href="webactivator.html"><button type="button" class="btn btn-outline-primary"
+                                onmouseover="msgs.innerHTML='Activa su cuenta de usuario desde el navegador de la consola'"
+                                onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'">
+                                Activator-Web
+                            </button></a>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Accede a esta consola a través de FTP (Cuidado con lo que haces)'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_ftp()>
+                            FTP
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Transferir juegos instalados a una unidad USB en exFAT'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_app2usb()>
+                            App2USB
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Transferir juegos instalados a una unidad USB en exFAT'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_pkgbackup()>
+                            PKG Backup
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Cree una copia de seguridad de la base de datos y los usuarios en una unidad USB'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_dbackup()>
+                            DB
+                            Backup
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Restaurar una copia de seguridad de la base de datos y los usuarios desde una unidad USB'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_dbrestore()>
+                            DB Restore
+                        </button>
+                    </div>
+                    <div class="container mb-3">
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Habilitar actualizaciones del sistema'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            onclick=load_enablebUpdates()>
+                            Habilitar Act.
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Deshabilitar actualizaciones del sistema'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            onclick=load_disableUpdates()>
+                            Deshabilitar Act.
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Habilitar/deshabilitar el historial del navegador'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            onclick=load_historyBlocker()>
+                            History Blocker
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Dumpear el kernel de consola a una unidad USB'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            onclick=load_kernelDump()>
+                            Kernel Dumper
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Dumpear un módulo kernel en una unidad USB'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            onclick=load_moduleDump()>
+                            Module Dumper
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='PS4 Debug para FW 9.00'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_ps4debug()>
+                            PS4 Debug
+                        </button>
+                    </div>
+                    <div class="container mb-3">
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Desactiva la ASLR (aleatorización del diseño del espacio de direcciones)'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_disbAslr()>
+                            Desactivar ASLR
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Desactiva el Modo IDU si lo has activado por error'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_exitidu()>
+                            Desactiva IDU
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Cambia el nombre del RIF <fake> a RIF <free>'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_rifRen()>
+                            Renombrar RIF
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='UART permanente para FW 9.00'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_permUart()>
+                            UART permanente
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Requerido para activar trucos a través del sitio web de PS4 Trainer'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_webrte()>
+                            WebRTE
+                        </button>
+                        <a href="http://ps4trainer.com/Trainer/index.html" target="_blank"><button type="button"
+                                class="btn btn-outline-success"
+                                onmouseover="msgs.innerHTML='Sitio web de PS4 Trainer (siga las instrucciones allí)'"
+                                onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"> PS4 Trainer
+                            </button></a>
+                    </div>
+                    <div class="container mb-3">
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Cargar Linux con 1GB VRAM'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_linux1gb()>
+                            Linux 1GB
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Cargar Linux con 2GB VRAM'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_linux2gb()>
+                            Linux 2GB
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Cargar Linux con 3GB VRAM'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_linux3gb()>
+                            Linux 3GB
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Cargar Linux con 4GB VRAM'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_linux4gb()>
+                            Linux 4GB
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Cargar Linux con 5GB VRAM'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_linux5gb()>
+                            Linux 5GB
+                        </button>
+                    </div>
+                    <div class="container align-items-center justify-content-center mb-2">
+                        <button type="button" class="btn btn-outline-success"
+                            onmouseover="msgs.innerHTML='Mods de juegos (Hosted Online)'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                            aria-controls="offcanvasBottom">
+                            Games-Mods (Online) </button>
+                        <button type="button" class="btn btn-outline-danger"
+                            onmouseover="msgs.innerHTML='Orbis ToolBox Alpha 1190 para FW 9.00'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_toolbox()>
+                            Orbis-Toolbox
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Modificar la velocidad del ventilador de PS4'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            onclick=load_fanthreshold()>
+                            Límite de ventilador
+                        </button>
+                        <select id="tempC" class="form-select"></select>°C
                     </div>
                 </div>
-                <div class="d-flex justify-content-center">
-                    <div class="card w-100 mb-2">
-                        <div class="card-body">
-                            <h5 class="card-title fs-4 mb-3">Payloads</h5>
-                            <div class="mb-3">
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Dumpear únicamente el Juego a la unidad USB'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_Gdumper()>
-                                    Game-Dumper
-                                </button>
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Dumpear únicamente la Actualización a la unidad USB'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_Udumper()>
-                                    Update-Dumper
-                                </button>
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Dumpear por separado el Juego y la Actualización a la unidad USB'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_SGUdumper()>
-                                    SGU-Dumper
-                                </button>
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Dumpear fusionado Juego y Actualización a la unidad USB'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_MGUdumper()>
-                                    MGU-Dumper
-                                </button>
-                            </div>
-                            <div class="mb-3">
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Habilita algunas funciones de depuración disponibles en TestKit'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_todex()>
-                                    ToDex
-                                </button>
-                                <a href="webactivator.html"><button type="button" class="btn btn-outline-primary"
-                                        onmouseover="msgs.innerHTML='Activa su cuenta de usuario desde el navegador de la consola'"
-                                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'">
-                                        Activator-Web
-                                    </button></a>
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Accede a esta consola a través de FTP (Cuidado con lo que haces)'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_ftp()>
-                                    FTP
-                                </button>
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Transferir juegos instalados a una unidad USB en exFAT'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_app2usb()>
-                                    App2USB
-                                </button>
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Transferir juegos instalados a una unidad USB en exFAT'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_pkgbackup()>
-                                    PKG Backup
-                                </button>
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Cree una copia de seguridad de la base de datos y los usuarios en una unidad USB'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_dbackup()> DB
-                                    Backup
-                                </button>
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Restaurar una copia de seguridad de la base de datos y los usuarios desde una unidad USB'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_dbrestore()>
-                                    DB
-                                    Restore
-                                </button>
-                            </div>
-                            <div class="mb-3">
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Habilitar actualizaciones del sistema'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_enablebUpdates()>
-                                    Habilitar
-                                    Act.
-                                </button>
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Deshabilitar actualizaciones del sistema'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_disableUpdates()>
-                                    Deshabilitar Act.
-                                </button>
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Habilitar/deshabilitar el historial del navegador'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_historyBlocker()>
-                                    History
-                                    Blocker
-                                </button>
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Dumpear el kernel de consola a una unidad USB'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_kernelDump()>
-                                    Kernel
-                                    Dumper
-                                </button>
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Dumpear un módulo kernel en una unidad USB'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_moduleDump()>
-                                    Module
-                                    Dumper
-                                </button>
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='PS4 Debug para FW 9.00'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_ps4debug()>
-                                    PS4
-                                    Debug
-                                </button>
-                            </div>
-                            <div class="mb-3">
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Desactiva la ASLR (aleatorización del diseño del espacio de direcciones)'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_disbAslr()>
-                                    Desactivar ASLR
-                                </button>
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Desactiva el Modo IDU si lo has activado por error'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_exitidu()>
-                                    Desactiva
-                                    IDU
-                                </button>
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Cambia el nombre del RIF <fake> a RIF <free>'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_rifRen()>
-                                    Renombrar
-                                    RIF
-                                </button>
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='UART permanente para FW 9.00'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_permUart()>
-                                    UART
-                                    permanente
-                                </button>
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Requerido para activar trucos a través del sitio web de PS4 Trainer'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_webrte()>
-                                    WebRTE
-                                </button>
-                                <a href="http://ps4trainer.com/Trainer/index.html" target="_blank"><button type="button"
-                                        class="btn btn-outline-success"
-                                        onmouseover="msgs.innerHTML='Sitio web de PS4 Trainer (siga las instrucciones allí)'"
-                                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"> PS4 Trainer
-                                    </button></a>
-                            </div>
-                            <div class="mb-3">
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Cargar Linux con 1GB VRAM'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_linux1gb()>
-                                    Linux
-                                    1GB
-                                </button>
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Cargar Linux con 2GB VRAM'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_linux2gb()>
-                                    Linux
-                                    2GB
-                                </button>
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Cargar Linux con 3GB VRAM'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_linux3gb()>
-                                    Linux
-                                    3GB
-                                </button>
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Cargar Linux con 4GB VRAM'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_linux4gb()>
-                                    Linux
-                                    4GB
-                                </button>
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Cargar Linux con 5GB VRAM'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_linux5gb()>
-                                    Linux
-                                    5GB
-                                </button>
-                            </div>
-                            <div class="mb-2">
-                                <button type="button" class="btn btn-outline-success"
-                                    onmouseover="msgs.innerHTML='Mods de juegos (Hosted Online)'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
-                                    aria-controls="offcanvasBottom">
-                                    Games-Mods (Online) </button>
-                                <button type="button" class="btn btn-outline-danger"
-                                    onmouseover="msgs.innerHTML='Orbis ToolBox Alpha 1190 para FW 9.00'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_toolbox()>
-                                    Orbis-Toolbox
-                                </button>
-                                <button type="button" class="btn btn-outline-primary"
-                                    onmouseover="msgs.innerHTML='Modificar la velocidad del ventilador de PS4'"
-                                    onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
-                                    onclick=load_fanthreshold()>
-                                    Límite de
-                                    ventilador
-                                </button>
-                                <select id="tempC" class="m-2"></select>°C
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="msgs" class="alert alert-primary fs-4 mb-5" role="alert">
+            </div>
+            <div class="container mb-2">
+                <div id="msgs" class="alert alert-primary" role="alert">
                     Cargas Útiles
                 </div>
             </div>
-        </div>
 
-        <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom"
-            aria-labelledby="offcanvasBottomLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasBottomLabel">Payloads Online</h5>
-                <button type="button" class="btn-close white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <div class="mb-3">
-                    <button type="button" class="btn btn-outline-primary"
-                        onmouseover="msgs.innerHTML='GTA V Mod - Arabic Guy v1.00 (L1 + R1)'"
-                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_arabicGuy100()>
-                        Arabic
-                        Guy
-                        v1.00
-                    </button>
-                    <button type="button" class="btn btn-outline-primary"
-                        onmouseover="msgs.innerHTML='GTA V Mod - Arabic Guy v1.27 (L1 + R1)'"
-                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_arabicGuy127()>
-                        Arabic
-                        Guy
-                        v1.27
-                    </button>
-                    <button type="button" class="btn btn-outline-primary"
-                        onmouseover="msgs.innerHTML='GTA V Mod - Arabic Guy v1.32 (L1 + R1)'"
-                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_arabicGuy132()>
-                        Arabic
-                        Guy
-                        v1.32
-                    </button>
-                    <button type="button" class="btn btn-outline-primary"
-                        onmouseover="msgs.innerHTML='GTA V Mod - Arabic Guy v1.33 (L1 + R1)'"
-                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_arabicGuy133()>
-                        Arabic
-                        Guy
-                        v1.33
-                    </button>
-                    <button type="button" class="btn btn-outline-primary"
-                        onmouseover="msgs.innerHTML='GTA V Mod - Expulsion v4.0 - 1.38'"
-                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_Expulsion()>
-                        Expulsion
-                        v4.0 -
-                        1.38 </button>
-                    <button type="button" class="btn btn-outline-primary"
-                        onmouseover="msgs.innerHTML='GTA V Mod - Lamance v0.9 - 1.38 (Derecha + Cuadrado)'"
-                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_Lamance()>
-                        Lamance
-                        v0.9 -
-                        1.38
-                    </button>
+            <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom"
+                aria-labelledby="offcanvasBottomLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasBottomLabel">Payloads Online</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div class="mb-3">
-                    <button type="button" class="btn btn-outline-primary"
-                        onmouseover="msgs.innerHTML='GTA V Mod - WildeModz-1.32 v1.3'"
-                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_WildeModz132()>
-                        WildeModz-1.32
-                        v1.3 </button>
-                    <button type="button" class="btn btn-outline-primary"
-                        onmouseover="msgs.innerHTML='GTA V Mod - WildeModz-1.33 v1.3'"
-                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_WildeModz133()>
-                        WildeModz-1.33
-                        v1.3 </button>
-                    <button type="button" class="btn btn-outline-primary"
-                        onmouseover="msgs.innerHTML='GTA V Mod - WildeModz-1.38 v1.7'"
-                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_WildeModz138()>
-                        WildeModz-1.38
-                        v1.7 </button>
-                    <button type="button" class="btn btn-outline-primary"
-                        onmouseover="msgs.innerHTML='GTA V Mod - Beef Queef Mod v1.33'"
-                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_beefQueef133()>
-                        Beef
-                        Queef
-                        Mod
-                        v1.33 </button>
-                    <button type="button" class="btn btn-outline-primary"
-                        onmouseover="msgs.innerHTML='GTA V Mod - Beef Queef Mod v1.34'"
-                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_beefQueef134()>
-                        Beef
-                        Queef
-                        Mod
-                        v1.34 </button>
-                    <button type="button" class="btn btn-outline-primary"
-                        onmouseover="msgs.innerHTML='GTA V Mod - Beef Queef Mod v1.38d'"
-                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_beefQueef138()>
-                        Beef
-                        Queef
-                        Mod
-                        v1.38d </button>
-                </div>
-                <div class="mb-3">
-                    <button type="button" class="btn btn-outline-primary"
-                        onmouseover="msgs.innerHTML='Red Dead Redemption 2 Mod - Oysters Menu 1.00 v1.3.7'"
-                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_Oysters100()>
-                        Oysters
-                        Menu
-                        1.00
-                    </button>
-                    <button type="button" class="btn btn-outline-primary"
-                        onmouseover="msgs.innerHTML='Red Dead Redemption 2 Mod - Oysters Menu 1.13 v1.3.6'"
-                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_Oysters113()>
-                        Oysters
-                        Menu
-                        1.13
-                    </button>
-                    <button type="button" class="btn btn-outline-primary"
-                        onmouseover="msgs.innerHTML='Red Dead Redemption 2 Mod - Oysters Menu 1.19 v1.3.6'"
-                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_Oysters119()>
-                        Oysters
-                        Menu
-                        1.19
-                    </button>
-                    <button type="button" class="btn btn-outline-primary"
-                        onmouseover="msgs.innerHTML='Red Dead Redemption 2 Mod - Oysters Menu 1.24 v1.3.7'"
-                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_Oysters124()>
-                        Oysters
-                        Menu
-                        1.24
-                    </button>
-                    <button type="button" class="btn btn-outline-primary"
-                        onmouseover="msgs.innerHTML='Red Dead Redemption 2 Mod - Oysters Menu 1.29 v1.3.7'"
-                        onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_Oysters129()>
-                        Oysters
-                        Menu
-                        1.29
-                    </button>
+                <div class="offcanvas-body">
+                    <div class="mb-3">
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='GTA V Mod - Arabic Guy v1.00 (L1 + R1)'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            onclick=load_arabicGuy100()>
+                            Arabic Guy v1.00
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='GTA V Mod - Arabic Guy v1.27 (L1 + R1)'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            onclick=load_arabicGuy127()>
+                            Arabic Guy v1.27
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='GTA V Mod - Arabic Guy v1.32 (L1 + R1)'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            onclick=load_arabicGuy132()>
+                            Arabic Guy v1.32
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='GTA V Mod - Arabic Guy v1.33 (L1 + R1)'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            onclick=load_arabicGuy133()>
+                            Arabic Guy v1.33
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='GTA V Mod - Expulsion v4.0 - 1.38'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_Expulsion()>
+                            Expulsion v4.0 - 1.38 </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='GTA V Mod - Lamance v0.9 - 1.38 (Derecha + Cuadrado)'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'" onclick=load_Lamance()>
+                            Lamance v0.9 - 1.38
+                        </button>
+                    </div>
+                    <div class="mb-3">
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='GTA V Mod - WildeModz-1.32 v1.3'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            onclick=load_WildeModz132()>
+                            WildeModz-1.32 v1.3 </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='GTA V Mod - WildeModz-1.33 v1.3'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            onclick=load_WildeModz133()>
+                            WildeModz-1.33 v1.3 </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='GTA V Mod - WildeModz-1.38 v1.7'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            onclick=load_WildeModz138()>
+                            WildeModz-1.38 v1.7 </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='GTA V Mod - Beef Queef Mod v1.33'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            onclick=load_beefQueef133()>
+                            Beef Queef Mod v1.33 </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='GTA V Mod - Beef Queef Mod v1.34'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            onclick=load_beefQueef134()>
+                            Beef Queef Mod v1.34 </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='GTA V Mod - Beef Queef Mod v1.38d'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            onclick=load_beefQueef138()>
+                            Beef Queef Mod v1.38d </button>
+                    </div>
+                    <div class="mb-3">
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Red Dead Redemption 2 Mod - Oysters Menu 1.00 v1.3.7'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            onclick=load_Oysters100()>
+                            Oysters Menu 1.00
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Red Dead Redemption 2 Mod - Oysters Menu 1.13 v1.3.6'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            onclick=load_Oysters113()>
+                            Oysters Menu 1.13
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Red Dead Redemption 2 Mod - Oysters Menu 1.19 v1.3.6'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            onclick=load_Oysters119()>
+                            Oysters Menu 1.19
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Red Dead Redemption 2 Mod - Oysters Menu 1.24 v1.3.7'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            onclick=load_Oysters124()>
+                            Oysters Menu 1.24
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"
+                            onmouseover="msgs.innerHTML='Red Dead Redemption 2 Mod - Oysters Menu 1.29 v1.3.7'"
+                            onmouseout="msgs.innerHTML='PS4 Host FW 9.00 by Dark Batman Inc.'"
+                            onclick=load_Oysters129()>
+                            Oysters Menu 1.29
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
+    </div>
+
     <script>
         for (var i = 40; i <= 79; i = i + 1) {
             var select = document.getElementById("tempC");
@@ -902,6 +859,7 @@
         function load_fanthreshold() {
             var temp = tempC.value;
             LoadedMSG = "Fan Threshold Cargado..."
+            console.log("Fan Threshold Cargado... Temperatura: " + temp);
             load_poc(temp);
         }
 
